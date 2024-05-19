@@ -1,10 +1,20 @@
+import { useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import "./scss/main.scss";
 import { useCounterStore } from "./store";
 
+function setCount() {
+  // call count in hook
+  // const count = useCounterStore.getState().count;
+  useCounterStore.setState({ count: 1 });
+}
 function App() {
   const count = useCounterStore((state) => state.count);
+
+  useEffect(() => {
+    setCount();
+  }, []);
 
   return (
     <>
